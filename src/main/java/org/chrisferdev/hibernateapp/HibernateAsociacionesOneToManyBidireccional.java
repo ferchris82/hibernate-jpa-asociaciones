@@ -23,6 +23,14 @@ public class HibernateAsociacionesOneToManyBidireccional {
             em.persist(cliente);
             em.getTransaction().commit();
             System.out.println(cliente);
+
+            em.getTransaction().begin();
+            // Factura f3 = em.find(Factura.class, 1L);
+            Factura f3 = new Factura("compras de supermercado", 5000L);
+            f3.setId(1L);
+            cliente.removeFactura(f3);
+            em.getTransaction().commit();
+            System.out.println(cliente);
         } catch (Exception e){
             em.getTransaction().rollback();
             e.printStackTrace();
