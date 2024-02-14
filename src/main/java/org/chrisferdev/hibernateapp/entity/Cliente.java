@@ -5,6 +5,8 @@ import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="clientes")
@@ -22,15 +24,21 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Direccion> direcciones;
+
     public Cliente() {
+        direcciones = new ArrayList<>();
     }
 
     public Cliente(String nombre, String apellido) {
+        this();
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
     public Cliente(Long id, String nombre, String apellido, String formaPago) {
+        this();
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,6 +77,13 @@ public class Cliente {
         this.formaPago = formaPago;
     }
 
+    public List<Direccion> getDirecciones() {
+        return direcciones;
+    }
+
+    public void setDirecciones(List<Direccion> direcciones) {
+        this.direcciones = direcciones;
+    }
 
     @Override
     public String toString() {
@@ -79,6 +94,8 @@ public class Cliente {
                 ", apellido'" + apellido + '\'' +
                 ", formaPago='" + formaPago+ '\'' +
                 ", creadoEn='" + creado + '\'' +
-                ", editadoEn='" + editado +'\'' + '}';
+                ", editadoEn='" + editado +'\'' +
+                ", direcciones='" + direcciones + '\'' +
+                '}';
     }
 }
