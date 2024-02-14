@@ -31,7 +31,11 @@ public class Cliente {
     , uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
+    private List<Factura> facturas;
+
     public Cliente() {
+        facturas = new ArrayList<>();
         direcciones = new ArrayList<>();
     }
 
@@ -89,6 +93,27 @@ public class Cliente {
         this.direcciones = direcciones;
     }
 
+    public Auditoria getAudit() {
+        return audit;
+    }
+
+    public void setAudit(Auditoria audit) {
+        this.audit = audit;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public Cliente addFactura(Factura factura){
+        this.facturas.add(factura);
+        factura.setCliente(this);
+        return this;
+    }
     @Override
     public String toString() {
         LocalDateTime creado = this.audit != null? audit.getCreadoEn():null;
@@ -100,6 +125,7 @@ public class Cliente {
                 ", creadoEn='" + creado + '\'' +
                 ", editadoEn='" + editado +'\'' +
                 ", direcciones='" + direcciones + '\'' +
+                ", facturas='" + facturas + '\'' +
                 '}';
     }
 }
