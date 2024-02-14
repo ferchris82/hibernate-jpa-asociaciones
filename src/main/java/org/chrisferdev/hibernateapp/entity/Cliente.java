@@ -25,7 +25,10 @@ public class Cliente {
     private Auditoria audit = new Auditoria();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_cliente")
+    //@JoinColumn(name = "id_cliente")
+    @JoinTable(name = "tbl_clientes_direcciones", joinColumns = @JoinColumn(name = "id_cliente")
+    , inverseJoinColumns = @JoinColumn(name = "id_direccion")
+    , uniqueConstraints = @UniqueConstraint(columnNames = {"id_direccion"}))
     private List<Direccion> direcciones;
 
     public Cliente() {
