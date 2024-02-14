@@ -25,6 +25,7 @@ public class Cliente {
     private Auditoria audit = new Auditoria();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id_cliente")
     private List<Direccion> direcciones;
 
     public Cliente() {
