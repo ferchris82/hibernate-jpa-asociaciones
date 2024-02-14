@@ -74,11 +74,11 @@ public class Cliente {
     public String toString() {
         LocalDateTime creado = this.audit != null? audit.getCreadoEn():null;
         LocalDateTime editado = this.audit != null? audit.getEditadoEn():null;
-        return "id=" + id +
+        return "{" + "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido'" + apellido + '\'' +
                 ", formaPago='" + formaPago+ '\'' +
                 ", creadoEn='" + creado + '\'' +
-                ", editadoEn='" + editado +'\'';
+                ", editadoEn='" + editado +'\'' + '}';
     }
 }
