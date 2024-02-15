@@ -3,7 +3,7 @@ package org.chrisferdev.hibernateapp;
 import jakarta.persistence.EntityManager;
 import org.chrisferdev.hibernateapp.entity.Cliente;
 import org.chrisferdev.hibernateapp.util.JpaUtil;
-import org.w3c.dom.stylesheets.LinkStyle;
+
 
 import java.util.List;
 
