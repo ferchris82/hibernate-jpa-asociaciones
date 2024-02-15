@@ -6,6 +6,8 @@
         <class>org.chrisferdev.hibernateapp.entity.Factura</class>
         <class>org.chrisferdev.hibernateapp.entity.Direccion</class>
         <class>org.chrisferdev.hibernateapp.entity.ClienteDetalle</class>
+        <class>org.chrisferdev.hibernateapp.entity.Alumno</class>
+        <class>org.chrisferdev.hibernateapp.entity.Curso</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/java_hibernate_curso?serverTimezone=America/Bogota"/>
