@@ -16,6 +16,9 @@ public class ClienteDetalle {
     @Column(name = "puntos_acumulados")
     private Long puntosAcumulados;
 
+    @OneToOne
+    @JoinColumn(name = "cliente_detalle_id")
+    private Cliente cliente;
 
     public ClienteDetalle(boolean prime, Long puntosAcumulados) {
         this.prime = prime;
@@ -31,6 +34,15 @@ public class ClienteDetalle {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public boolean isPrime() {
